@@ -1,0 +1,11 @@
+# Ignore dependencies
+node_modules/
+*/node_modules/
+
+# Ignore Secrets 
+.env
+*/.env
+
+
+.DS_Store
+Thumbs.db
