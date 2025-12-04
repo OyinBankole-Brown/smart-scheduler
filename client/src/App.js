@@ -72,21 +72,23 @@ function App(){
 
       <div className="task-list">
         {tasks.map((task) => (
-          <div key={task._id} className="task-card">
+         <div key={task._id} className="task-card">
             <div className="card-header">
               <h3>{task.title}</h3>
               <button 
                 className="delete-btn" 
                 onClick={() => handleDelete(task._id)}
+                title="Delete Task"
               >
-                ✖
+                ✕
               </button>
             </div>
+            
             <div className="steps-container">
-              {task.aiBreakdown.map((step, index) => (
+              {task.aiBreakdown.map((stepObj, index) => (
                 <div key={index} className="step-item">
                   <input type="checkbox" />
-                  <span>{step.step}</span>
+                  <span>{stepObj.step || stepObj}</span>
                 </div>
               ))}
             </div>

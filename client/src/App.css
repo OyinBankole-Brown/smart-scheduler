@@ -83,52 +83,25 @@ button:disabled {
   text-align: right;
 }
 
-.card_header {
+.card-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 15px;
+  align-items: flex-start; 
+  margin-bottom: 10px;
 }
 
 .delete-btn {
-  background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%); /* Fallback */
-  background: linear-gradient(
-    45deg, 
-    #ff00cc, 
-    #3333ff, 
-    #00ffff, 
-    #ff00cc
-  );
-  background-size: 400% 400%;
+  background: transparent;
   border: none;
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  font-size: 14px;
+  color: #ff4d4d; /* Nice soft red */
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  animation: holo-shimmer 3s ease infinite;
+  padding: 0 5px;
+  line-height: 1;
+  transition: color 0.2s;
 }
 
 .delete-btn:hover {
-  transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-}
-
-@keyframes holo-shimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  color: #cc0000; /* Darker red on hover */
 }
