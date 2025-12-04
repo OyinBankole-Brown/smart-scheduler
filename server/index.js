@@ -56,8 +56,18 @@ app.post('/api/generate-task', async (req, res) => {
 
 // get all tasks to show on screen
 app.get('/api/tasks', async (req, res) => {
-    const tasks = (await Task.find()).toSorted({ createdAt: -1 });
+  try {
+    // 1. Fetch all tasks first (without sorting in DB to avoid crash)
+    const tasks = await Task.find();
+    
+    // 2. Sort them manually in JavaScript (Newest first)
+    tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    
     res.json(tasks);
+  } catch (err) {
+    console.error("Error fetching tasks:", err);
+    res.status(500).json({ error: "Failed to fetch tasks" });
+  }
 });
 
 //start server
