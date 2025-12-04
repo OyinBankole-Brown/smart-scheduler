@@ -39,6 +39,20 @@ function App(){
     setLoading(false);
   };
 
+  const handleDelete = async (id) => {
+    setTasks(tasks.filter(task => task._id !== id));
+
+    //delete from server
+    try{
+      await axios.delete(`https://smart-scheduler-api-boee.onrender.com/api/tasks/${id}`);
+    } catch (err){
+      console.error("Error deleting task:", err);
+      alert("Failed to delete task. Please try again.");
+      // Re-fetch tasks to ensure UI consistency
+      fetchTasks();
+    }
+  }
+
   return (
     <div className="app-container">
       <h1>Smart Scheduler</h1>
@@ -59,7 +73,15 @@ function App(){
       <div className="task-list">
         {tasks.map((task) => (
           <div key={task._id} className="task-card">
-            <h3>{task.title}</h3>
+            <div className="card-header">
+              <h3>{task.title}</h3>
+              <button 
+                className="delete-btn" 
+                onClick={() => handleDelete(task._id)}
+              >
+                ✖
+              </button>
+            </div>
             <div className="steps-container">
               {task.aiBreakdown.map((step, index) => (
                 <div key={index} className="step-item">

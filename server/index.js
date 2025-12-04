@@ -72,4 +72,15 @@ app.get('/api/tasks', async (req, res) => {
 
 //start server
 const PORT = process.env.PORT || 5000;
+
+// DELETE route
+app.delete('/api/tasks/:id', async (req, res) => {
+    try{
+        const { id } = req.params;
+        await Task.findByIdAndDelete(id);
+    } catch (error){
+        res.status(500).send("Failed to delete task");
+    }
+}
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
