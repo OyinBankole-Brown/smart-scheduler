@@ -14,7 +14,7 @@ function App(){
 
   const fetchTasks = async () => {
     try{
-      const res = await axios.get('http://localhost:5000/api/tasks');
+      const res = await axios.get('https://smart-scheduler-api-boee.onrender.com/api/tasks');
       setTasks(res.data);
     } catch (err) {
       console.error("Error fetching tasks:", err);
@@ -26,7 +26,7 @@ function App(){
     setLoading(true);
 
     try{
-      const res = await axios.post('http://localhost:5000/api/generate-task', 
+      const res = await axios.post('https://smart-scheduler-api-boee.onrender.com/api/generate-task', 
         { 
           title: taskTitle 
         });
